@@ -1,0 +1,318 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 2200" width="420" height="2200">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .label { font-size: 9px; fill: #999; font-weight: 600; letter-spacing: 1.5px; }
+      .title { font-size: 15px; fill: #333; font-weight: 700; }
+      .sub { font-size: 10px; fill: #999; }
+      .card-t { font-size: 10px; fill: #555; font-weight: 700; }
+      .wire-line { fill: #ddd; }
+      .wire-box { fill: none; stroke: #ccc; stroke-width: 1; }
+      .wire-fill { fill: #eee; stroke: #ccc; stroke-width: 1; }
+      .step-circle { fill: #bbb; }
+    </style>
+  </defs>
+
+  <!-- BG -->
+  <rect width="420" height="2200" fill="#fff"/>
+
+  <!-- ==================== HERO ==================== -->
+  <rect x="0" y="0" width="420" height="300" class="wire-box"/>
+
+  <text x="210" y="28" class="label" text-anchor="middle">HERO</text>
+
+  <!-- Headline placeholder -->
+  <rect x="90" y="50" width="240" height="14" rx="3" class="wire-line"/>
+  <rect x="110" y="72" width="200" height="14" rx="3" class="wire-line"/>
+
+  <!-- Sub-headline -->
+  <rect x="120" y="100" width="180" height="8" rx="2" fill="#eee"/>
+  <rect x="130" y="114" width="160" height="8" rx="2" fill="#eee"/>
+
+  <!-- CTA button -->
+  <rect x="150" y="140" width="120" height="32" rx="6" fill="#ccc"/>
+  <rect x="170" y="152" width="80" height="8" rx="2" fill="#fff"/>
+
+  <!-- Hero image placeholder -->
+  <rect x="60" y="190" width="300" height="90" rx="6" class="wire-fill"/>
+  <line x1="60" y1="190" x2="360" y2="280" stroke="#ccc" stroke-width="0.5"/>
+  <line x1="360" y1="190" x2="60" y2="280" stroke="#ccc" stroke-width="0.5"/>
+  <text x="210" y="242" class="sub" text-anchor="middle">image / illustration</text>
+
+  <!-- ==================== ILS NOUS FONT CONFIANCE ==================== -->
+  <rect x="0" y="300" width="420" height="80" class="wire-box"/>
+
+  <text x="210" y="325" class="label" text-anchor="middle">ILS NOUS FONT CONFIANCE</text>
+
+  <!-- 5 logos -->
+  <rect x="25" y="340" width="60" height="26" rx="4" class="wire-fill"/>
+  <rect x="100" y="340" width="60" height="26" rx="4" class="wire-fill"/>
+  <rect x="175" y="340" width="60" height="26" rx="4" class="wire-fill"/>
+  <rect x="250" y="340" width="60" height="26" rx="4" class="wire-fill"/>
+  <rect x="325" y="340" width="60" height="26" rx="4" class="wire-fill"/>
+
+  <!-- ==================== SOLUTION — 3 BLOCS ==================== -->
+  <rect x="0" y="380" width="420" height="280" class="wire-box"/>
+
+  <text x="210" y="408" class="label" text-anchor="middle">SOLUTION</text>
+  <text x="210" y="428" class="title" text-anchor="middle">Comment on vous trouve des clients</text>
+
+  <!-- Card 1 : Strategy -->
+  <rect x="20" y="448" width="118" height="190" rx="6" class="wire-fill"/>
+  <circle cx="79" cy="480" r="16" class="step-circle"/>
+  <text x="79" y="485" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">1</text>
+  <text x="79" y="510" class="card-t" text-anchor="middle">Strategy</text>
+  <rect x="35" y="524" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="40" y="534" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="37" y="544" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="42" y="554" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="35" y="564" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="40" y="574" width="78" height="5" rx="2" class="wire-line"/>
+
+  <!-- Card 2 : Scrapping -->
+  <rect x="150" y="448" width="118" height="190" rx="6" class="wire-fill"/>
+  <circle cx="209" cy="480" r="16" class="step-circle"/>
+  <text x="209" y="485" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">2</text>
+  <text x="209" y="510" class="card-t" text-anchor="middle">Scrapping</text>
+  <rect x="165" y="524" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="170" y="534" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="167" y="544" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="172" y="554" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="165" y="564" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="170" y="574" width="78" height="5" rx="2" class="wire-line"/>
+
+  <!-- Card 3 : Prospection -->
+  <rect x="280" y="448" width="118" height="190" rx="6" class="wire-fill"/>
+  <circle cx="339" cy="480" r="16" class="step-circle"/>
+  <text x="339" y="485" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+  <text x="339" y="510" class="card-t" text-anchor="middle">Prospection</text>
+  <rect x="295" y="524" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="300" y="534" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="297" y="544" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="302" y="554" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="295" y="564" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="300" y="574" width="78" height="5" rx="2" class="wire-line"/>
+
+  <!-- ==================== POUR QUI — 3 METIERS ==================== -->
+  <rect x="0" y="660" width="420" height="260" class="wire-box"/>
+
+  <text x="210" y="688" class="label" text-anchor="middle">POUR QUI ?</text>
+  <text x="210" y="708" class="title" text-anchor="middle">Fait pour les prestataires B2B</text>
+
+  <!-- Metier 1 -->
+  <rect x="20" y="725" width="118" height="175" rx="6" class="wire-fill"/>
+  <rect x="20" y="725" width="118" height="70" rx="6" fill="#ddd"/>
+  <line x1="20" y1="725" x2="138" y2="795" stroke="#ccc" stroke-width="0.5"/>
+  <line x1="138" y1="725" x2="20" y2="795" stroke="#ccc" stroke-width="0.5"/>
+  <text x="79" y="815" class="card-t" text-anchor="middle">Videastes</text>
+  <rect x="35" y="828" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="40" y="838" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="37" y="848" width="84" height="5" rx="2" class="wire-line"/>
+
+  <!-- Metier 2 -->
+  <rect x="150" y="725" width="118" height="175" rx="6" class="wire-fill"/>
+  <rect x="150" y="725" width="118" height="70" rx="6" fill="#ddd"/>
+  <line x1="150" y1="725" x2="268" y2="795" stroke="#ccc" stroke-width="0.5"/>
+  <line x1="268" y1="725" x2="150" y2="795" stroke="#ccc" stroke-width="0.5"/>
+  <text x="209" y="815" class="card-t" text-anchor="middle">Photographes</text>
+  <rect x="165" y="828" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="170" y="838" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="167" y="848" width="84" height="5" rx="2" class="wire-line"/>
+
+  <!-- Metier 3 -->
+  <rect x="280" y="725" width="118" height="175" rx="6" class="wire-fill"/>
+  <rect x="280" y="725" width="118" height="70" rx="6" fill="#ddd"/>
+  <line x1="280" y1="725" x2="398" y2="795" stroke="#ccc" stroke-width="0.5"/>
+  <line x1="398" y1="725" x2="280" y2="795" stroke="#ccc" stroke-width="0.5"/>
+  <text x="339" y="815" class="card-t" text-anchor="middle">Consultants SEO</text>
+  <rect x="295" y="828" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="300" y="838" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="297" y="848" width="84" height="5" rx="2" class="wire-line"/>
+
+  <!-- ==================== PROCESS — 3 ETAPES ==================== -->
+  <rect x="0" y="920" width="420" height="310" class="wire-box"/>
+
+  <text x="210" y="948" class="label" text-anchor="middle">PROCESS</text>
+  <text x="210" y="968" class="title" text-anchor="middle">Comment ca marche ?</text>
+
+  <!-- Step 1 -->
+  <rect x="20" y="990" width="118" height="215" rx="6" class="wire-fill"/>
+  <circle cx="79" cy="1020" r="16" class="step-circle"/>
+  <text x="79" y="1025" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">1</text>
+  <text x="79" y="1052" class="card-t" text-anchor="middle">Contact a froid</text>
+  <rect x="35" y="1066" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="40" y="1076" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="37" y="1086" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="42" y="1096" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="35" y="1106" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="40" y="1116" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="37" y="1126" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="42" y="1136" width="74" height="5" rx="2" class="wire-line"/>
+
+  <!-- Arrow 1→2 -->
+  <line x1="140" y1="1060" x2="148" y2="1060" stroke="#aaa" stroke-width="1.5"/>
+  <polygon points="148,1055 156,1060 148,1065" fill="#aaa"/>
+
+  <!-- Step 2 -->
+  <rect x="150" y="990" width="118" height="215" rx="6" class="wire-fill"/>
+  <circle cx="209" cy="1020" r="16" class="step-circle"/>
+  <text x="209" y="1025" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">2</text>
+  <text x="209" y="1052" class="card-t" text-anchor="middle">Qualification</text>
+  <rect x="165" y="1066" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="170" y="1076" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="167" y="1086" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="172" y="1096" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="165" y="1106" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="170" y="1116" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="167" y="1126" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="172" y="1136" width="74" height="5" rx="2" class="wire-line"/>
+
+  <!-- Arrow 2→3 -->
+  <line x1="270" y1="1060" x2="278" y2="1060" stroke="#aaa" stroke-width="1.5"/>
+  <polygon points="278,1055 286,1060 278,1065" fill="#aaa"/>
+
+  <!-- Step 3 -->
+  <rect x="280" y="990" width="118" height="215" rx="6" class="wire-fill"/>
+  <circle cx="339" cy="1020" r="16" class="step-circle"/>
+  <text x="339" y="1025" font-size="14" fill="#fff" text-anchor="middle" font-weight="700">3</text>
+  <text x="339" y="1048" class="card-t" text-anchor="middle">Prospects</text>
+  <text x="339" y="1060" class="card-t" text-anchor="middle">chauds livres</text>
+  <rect x="295" y="1076" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="300" y="1086" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="297" y="1096" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="302" y="1106" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="295" y="1116" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="300" y="1126" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="297" y="1136" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="302" y="1146" width="74" height="5" rx="2" class="wire-line"/>
+
+  <!-- ==================== RAPPORT ==================== -->
+  <rect x="0" y="1230" width="420" height="200" class="wire-box"/>
+
+  <text x="210" y="1258" class="label" text-anchor="middle">RAPPORT</text>
+
+  <!-- Image placeholder -->
+  <rect x="20" y="1275" width="180" height="135" rx="6" class="wire-fill"/>
+  <line x1="20" y1="1275" x2="200" y2="1410" stroke="#ccc" stroke-width="0.5"/>
+  <line x1="200" y1="1275" x2="20" y2="1410" stroke="#ccc" stroke-width="0.5"/>
+  <text x="110" y="1348" class="sub" text-anchor="middle">image</text>
+
+  <!-- Text lines -->
+  <rect x="220" y="1280" width="170" height="10" rx="2" fill="#ddd"/>
+  <rect x="220" y="1300" width="160" height="6" rx="2" class="wire-line"/>
+  <rect x="220" y="1314" width="150" height="6" rx="2" class="wire-line"/>
+  <rect x="220" y="1328" width="165" height="6" rx="2" class="wire-line"/>
+  <rect x="220" y="1342" width="140" height="6" rx="2" class="wire-line"/>
+  <rect x="220" y="1356" width="155" height="6" rx="2" class="wire-line"/>
+  <rect x="220" y="1370" width="130" height="6" rx="2" class="wire-line"/>
+  <rect x="220" y="1384" width="160" height="6" rx="2" class="wire-line"/>
+
+  <!-- ==================== SIMULATEUR ==================== -->
+  <rect x="0" y="1430" width="420" height="220" class="wire-box"/>
+
+  <text x="210" y="1458" class="label" text-anchor="middle">SIMULATEUR</text>
+
+  <!-- Simulator box -->
+  <rect x="40" y="1475" width="340" height="155" rx="8" stroke="#aaa" stroke-width="1.5" fill="none"/>
+
+  <!-- Slider 1 -->
+  <rect x="65" y="1498" width="90" height="7" rx="2" fill="#ddd"/>
+  <rect x="65" y="1512" width="200" height="6" rx="3" fill="#eee"/>
+  <rect x="65" y="1512" width="130" height="6" rx="3" fill="#ccc"/>
+  <circle cx="195" cy="1515" r="6" fill="#bbb"/>
+  <rect x="280" y="1510" width="40" height="10" rx="3" class="wire-fill"/>
+
+  <!-- Slider 2 -->
+  <rect x="65" y="1540" width="90" height="7" rx="2" fill="#ddd"/>
+  <rect x="65" y="1554" width="200" height="6" rx="3" fill="#eee"/>
+  <rect x="65" y="1554" width="80" height="6" rx="3" fill="#ccc"/>
+  <circle cx="145" cy="1557" r="6" fill="#bbb"/>
+  <rect x="280" y="1552" width="40" height="10" rx="3" class="wire-fill"/>
+
+  <!-- Separator -->
+  <line x1="65" y1="1580" x2="355" y2="1580" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Result -->
+  <rect x="140" y="1592" width="140" height="10" rx="2" fill="#ddd"/>
+  <rect x="160" y="1610" width="100" height="14" rx="2" fill="#ccc"/>
+
+  <!-- ==================== POURQUOI NOUS CHOISIR ==================== -->
+  <rect x="0" y="1650" width="420" height="260" class="wire-box"/>
+
+  <text x="210" y="1678" class="label" text-anchor="middle">POURQUOI NOUS CHOISIR ?</text>
+
+  <!-- Bloc 1 -->
+  <rect x="20" y="1700" width="118" height="185" rx="6" class="wire-fill"/>
+  <circle cx="79" cy="1732" r="14" fill="#ddd"/>
+  <text x="79" y="1762" class="card-t" text-anchor="middle">Argument 1</text>
+  <rect x="35" y="1778" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="40" y="1788" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="37" y="1798" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="42" y="1808" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="35" y="1818" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="40" y="1828" width="78" height="5" rx="2" class="wire-line"/>
+
+  <!-- Bloc 2 -->
+  <rect x="150" y="1700" width="118" height="185" rx="6" class="wire-fill"/>
+  <circle cx="209" cy="1732" r="14" fill="#ddd"/>
+  <text x="209" y="1762" class="card-t" text-anchor="middle">Argument 2</text>
+  <rect x="165" y="1778" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="170" y="1788" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="167" y="1798" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="172" y="1808" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="165" y="1818" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="170" y="1828" width="78" height="5" rx="2" class="wire-line"/>
+
+  <!-- Bloc 3 -->
+  <rect x="280" y="1700" width="118" height="185" rx="6" class="wire-fill"/>
+  <circle cx="339" cy="1732" r="14" fill="#ddd"/>
+  <text x="339" y="1762" class="card-t" text-anchor="middle">Argument 3</text>
+  <rect x="295" y="1778" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="300" y="1788" width="78" height="5" rx="2" class="wire-line"/>
+  <rect x="297" y="1798" width="84" height="5" rx="2" class="wire-line"/>
+  <rect x="302" y="1808" width="74" height="5" rx="2" class="wire-line"/>
+  <rect x="295" y="1818" width="88" height="5" rx="2" class="wire-line"/>
+  <rect x="300" y="1828" width="78" height="5" rx="2" class="wire-line"/>
+
+  <!-- ==================== BOOK A CALL ==================== -->
+  <rect x="0" y="1910" width="420" height="170" class="wire-box"/>
+
+  <text x="210" y="1938" class="label" text-anchor="middle">BOOK A CALL</text>
+
+  <!-- Headline -->
+  <rect x="100" y="1955" width="220" height="12" rx="3" fill="#ddd"/>
+
+  <!-- Sub -->
+  <rect x="120" y="1978" width="180" height="7" rx="2" class="wire-line"/>
+
+  <!-- CTA button -->
+  <rect x="140" y="2005" width="140" height="36" rx="6" fill="#bbb"/>
+  <rect x="165" y="2018" width="90" height="8" rx="2" fill="#fff"/>
+
+  <!-- Calendly embed placeholder -->
+  <rect x="100" y="2050" width="220" height="16" rx="4" class="wire-fill"/>
+  <text x="210" y="2062" class="sub" text-anchor="middle">calendly embed</text>
+
+  <!-- ==================== FOOTER ==================== -->
+  <rect x="0" y="2080" width="420" height="120" fill="#eee" stroke="#ccc" stroke-width="1"/>
+
+  <text x="210" y="2105" class="label" text-anchor="middle">FOOTER</text>
+
+  <!-- 3 columns -->
+  <rect x="20" y="2118" width="80" height="8" rx="2" fill="#ccc"/>
+  <rect x="20" y="2132" width="100" height="5" rx="2" class="wire-line"/>
+  <rect x="20" y="2142" width="90" height="5" rx="2" class="wire-line"/>
+
+  <rect x="165" y="2118" width="80" height="8" rx="2" fill="#ccc"/>
+  <rect x="165" y="2132" width="100" height="5" rx="2" class="wire-line"/>
+  <rect x="165" y="2142" width="90" height="5" rx="2" class="wire-line"/>
+
+  <rect x="310" y="2118" width="80" height="8" rx="2" fill="#ccc"/>
+  <rect x="310" y="2132" width="90" height="5" rx="2" class="wire-line"/>
+  <rect x="310" y="2142" width="80" height="5" rx="2" class="wire-line"/>
+
+  <!-- Copyright -->
+  <line x1="20" y1="2165" x2="400" y2="2165" stroke="#ccc" stroke-width="0.5"/>
+  <rect x="155" y="2175" width="110" height="5" rx="2" class="wire-line"/>
+
+</svg>
