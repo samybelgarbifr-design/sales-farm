@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minebot — Copywriting Brief</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #fff; color: #1e293b; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 90vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    background: linear-gradient(170deg, #f8fafc 0%, #eef2ff 50%, #e0e7ff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(99,102,241,.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 16px; border-radius: 20px;
+    background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.15);
+    font-size: 13px; color: #6366f1; font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800; line-height: 1.15;
+    max-width: 720px;
+    color: #0f172a;
+  }
+  .hero h1 span { color: #6366f1; }
+  .hero .sub {
+    margin-top: 20px;
+    font-size: clamp(16px, 2vw, 19px);
+    color: #64748b; max-width: 560px; line-height: 1.6;
+  }
+  .hero .cta {
+    margin-top: 36px;
+    padding: 16px 36px; border-radius: 10px;
+    background: #6366f1; color: #fff;
+    font-size: 16px; font-weight: 700;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 4px 16px rgba(99,102,241,.25);
+  }
+  .hero .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(99,102,241,.35); }
+
+  /* ===== TRUST BAR ===== */
+  .trust {
+    padding: 40px 24px;
+    background: #fafbff;
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .trust p { font-size: 12px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 20px; }
+  .trust-logos {
+    display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;
+  }
+  .trust-logo {
+    width: 100px; height: 36px;
+    background: #e2e8f0; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #94a3b8; font-weight: 700;
+  }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { padding: 80px 24px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; color: #6366f1; text-transform: uppercase;
+    letter-spacing: 2px; font-weight: 700; text-align: center;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 800; text-align: center; color: #0f172a;
+    margin-bottom: 10px;
+  }
+  .section-sub {
+    font-size: 16px; color: #64748b; text-align: center;
+    max-width: 600px; margin: 0 auto 48px; line-height: 1.6;
+  }
+  .three-col {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 768px) {
+    .three-col { grid-template-columns: 1fr; }
+  }
+
+  /* ===== SOLUTION ===== */
+  .solution { background: #fff; }
+  .sol-card {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px;
+    padding: 32px 24px; text-align: center;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .sol-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+  .sol-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin: 0 auto 18px;
+  }
+  .sol-card:nth-child(1) .sol-icon { background: #eef2ff; }
+  .sol-card:nth-child(2) .sol-icon { background: #f5f3ff; }
+  .sol-card:nth-child(3) .sol-icon { background: #faf5ff; }
+  .sol-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+  .sol-card p { font-size: 14px; color: #64748b; line-height: 1.65; }
+
+  /* ===== POUR QUI ===== */
+  .pourqui { background: #f8fafc; }
+  .pq-card {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+    overflow: hidden; transition: transform .2s, box-shadow .2s;
+  }
+  .pq-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+  .pq-img {
+    width: 100%; height: 160px; background: #e2e8f0;
+    display: flex; align-items: center; justify-content: center;
+    color: #94a3b8; font-size: 12px; font-weight: 600;
+  }
+  .pq-body { padding: 24px; }
+  .pq-body h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+  .pq-body p { font-size: 14px; color: #64748b; line-height: 1.65; }
+
+  /* ===== PROCESS ===== */
+  .process { background: #fff; }
+  .proc-card {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px;
+    padding: 32px 24px; text-align: center; position: relative;
+  }
+  .proc-num {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #6366f1; color: #fff;
+    font-size: 20px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .proc-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+  .proc-card p { font-size: 14px; color: #64748b; line-height: 1.65; }
+  .proc-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: #c7d2fe; font-size: 28px; font-weight: 300;
+    padding: 0 4px;
+  }
+  .process-grid {
+    display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: start;
+  }
+  @media (max-width: 768px) {
+    .process-grid { grid-template-columns: 1fr; gap: 16px; }
+    .proc-arrow { transform: rotate(90deg); padding: 8px 0; }
+  }
+
+  /* ===== RAPPORT ===== */
+  .rapport { background: #f8fafc; }
+  .rapport-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  @media (max-width: 768px) { .rapport-grid { grid-template-columns: 1fr; } }
+  .rapport-img {
+    width: 100%; aspect-ratio: 4/3; background: #e2e8f0; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: #94a3b8; font-size: 13px; font-weight: 600;
+    border: 1px solid #d1d5db;
+  }
+  .rapport-stats { display: flex; flex-direction: column; gap: 20px; }
+  .stat-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; background: #fff; border-radius: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .stat-label { font-size: 14px; color: #64748b; }
+  .stat-value { font-size: 22px; font-weight: 800; color: #0f172a; }
+
+  /* ===== SIMULATEUR ===== */
+  .simulateur { background: #fff; }
+  .sim-box {
+    max-width: 580px; margin: 0 auto;
+    padding: 40px 36px; border-radius: 16px;
+    border: 2px solid #6366f1; background: #fafbff;
+  }
+  .sim-group { margin-bottom: 28px; }
+  .sim-group label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 14px; font-weight: 600; color: #334155; margin-bottom: 10px;
+  }
+  .sim-group label span { font-size: 13px; color: #6366f1; font-weight: 700; }
+  .sim-group input[type="range"] {
+    width: 100%; height: 6px; -webkit-appearance: none; appearance: none;
+    background: #e2e8f0; border-radius: 3px; outline: none;
+  }
+  .sim-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: #6366f1; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(99,102,241,.3);
+  }
+  .sim-sep { height: 1px; background: #e2e8f0; margin: 28px 0; }
+  .sim-result { text-align: center; }
+  .sim-result .label { font-size: 14px; color: #64748b; margin-bottom: 6px; }
+  .sim-result .value { font-size: 36px; font-weight: 800; color: #6366f1; }
+  .sim-result .unit { font-size: 16px; color: #94a3b8; margin-left: 4px; }
+
+  /* ===== POURQUOI NOUS ===== */
+  .pourquoi { background: #f8fafc; }
+  .pnc-card {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 14px;
+    padding: 32px 24px; text-align: center;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .pnc-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+  .pnc-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin: 0 auto 16px;
+  }
+  .pnc-card:nth-child(1) .pnc-icon { background: #ecfdf5; }
+  .pnc-card:nth-child(2) .pnc-icon { background: #eff6ff; }
+  .pnc-card:nth-child(3) .pnc-icon { background: #fef3c7; }
+  .pnc-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+  .pnc-card p { font-size: 14px; color: #64748b; line-height: 1.65; }
+
+  /* ===== BOOK A CALL ===== */
+  .bookcall {
+    padding: 80px 24px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    text-align: center;
+  }
+  .bookcall h2 { font-size: clamp(26px, 3.5vw, 36px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .bookcall p { font-size: 16px; color: #c7d2fe; max-width: 480px; margin: 0 auto 32px; line-height: 1.6; }
+  .bookcall .cta-white {
+    display: inline-block; padding: 16px 36px; border-radius: 10px;
+    background: #fff; color: #4f46e5;
+    font-size: 16px; font-weight: 800;
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  }
+  .bookcall .cta-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.2); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 48px 24px 32px;
+    background: #0f172a; color: #94a3b8;
+  }
+  .footer-grid {
+    max-width: 960px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .footer-desc { font-size: 13px; line-height: 1.6; }
+  .footer-col h4 { font-size: 13px; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .footer-col a { display: block; font-size: 13px; color: #94a3b8; text-decoration: none; margin-bottom: 8px; }
+  .footer-bottom {
+    max-width: 960px; margin: 32px auto 0;
+    padding-top: 20px; border-top: 1px solid #1e293b;
+    font-size: 12px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-badge">&#9935; Prospection IA 24/7</div>
+  <h1>Nos mineurs IA creusent pour vous.<br><span>Vous recoltez les pepites.</span></h1>
+  <p class="sub">Des leads B2B qualifies, extraits et livres chaque semaine. Vous ne prospectez plus — vous closez.</p>
+  <a href="#bookcall" class="cta">Reserver un appel de 15 min</a>
+</section>
+
+<!-- ==================== ILS NOUS FONT CONFIANCE ==================== -->
+<div class="trust">
+  <p>Ils nous font confiance</p>
+  <div class="trust-logos">
+    <div class="trust-logo">LOGO</div>
+    <div class="trust-logo">LOGO</div>
+    <div class="trust-logo">LOGO</div>
+    <div class="trust-logo">LOGO</div>
+    <div class="trust-logo">LOGO</div>
+  </div>
+</div>
+
+<!-- ==================== SOLUTION ==================== -->
+<section class="solution">
+  <div class="container">
+    <p class="section-label">Solution</p>
+    <h2 class="section-title">Comment nos mineurs vous trouvent des clients</h2>
+    <p class="section-sub">Un systeme en 3 filons qui tourne 24/7 pendant que vous vous concentrez sur votre metier.</p>
+    <div class="three-col">
+      <div class="sol-card">
+        <div class="sol-icon">&#128506;</div>
+        <h3>Cartographier le gisement</h3>
+        <p>On definit ensemble votre client ideal, vos angles d'approche et vos messages. Chaque campagne est construite autour de votre offre, votre secteur et votre zone geographique. Pas de template generique — une carte sur-mesure avant de creuser.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">&#9935;</div>
+        <h3>Creuser en profondeur</h3>
+        <p>Nos mineurs identifient vos prospects ideaux et enrichissent chaque contact avec des donnees precises : secteur, taille, localisation, signaux d'achat. On ne creuse pas au hasard — on cible les filons les plus riches.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">&#128142;</div>
+        <h3>Extraire les pepites</h3>
+        <p>Des sequences d'emails personnalises, envoyes au bon moment, au bon prospect. Chaque message est calibre pour engager une conversation, pas pour finir en spam. Les pepites remontent a la surface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== POUR QUI ==================== -->
+<section class="pourqui">
+  <div class="container">
+    <p class="section-label">Pour qui ?</p>
+    <h2 class="section-title">Pour qui creuse-t-on ?</h2>
+    <p class="section-sub">Vous etes expert dans votre metier. L'extraction de clients, c'est le notre.</p>
+    <div class="three-col">
+      <div class="pq-card">
+        <div class="pq-img">IMAGE</div>
+        <div class="pq-body">
+          <h3>Paysagistes</h3>
+          <p>Pour les paysagistes qui veulent developper leur portefeuille B2B et decrocher des contrats d'entretien recurrents aupres de coproprietes, hotels et entreprises.</p>
+        </div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-img">IMAGE</div>
+        <div class="pq-body">
+          <h3>Videastes</h3>
+          <p>Pour les videastes qui veulent trouver des clients professionnels recurrents et arreter de dependre du bouche-a-oreille pour remplir leur planning.</p>
+        </div>
+      </div>
+      <div class="pq-card">
+        <div class="pq-img">IMAGE</div>
+        <div class="pq-body">
+          <h3>Media Buyers</h3>
+          <p>Pour les media buyers qui veulent promouvoir leur expertise aupres de marques et e-commercants prets a investir en publicite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROCESS ==================== -->
+<section class="process">
+  <div class="container">
+    <p class="section-label">Process</p>
+    <h2 class="section-title">Comment ca marche ?</h2>
+    <p class="section-sub">3 etapes. Zero effort de votre part. Nos mineurs font le travail de fond.</p>
+    <div class="process-grid">
+      <div class="proc-card">
+        <div class="proc-num">1</div>
+        <h3>Prise de contact a froid</h3>
+        <p>Nos mineurs envoient des emails personnalises a des prospects cibles. Pas de copier-coller : chaque message est adapte au destinataire, comme un premier coup de pioche au bon endroit.</p>
+      </div>
+      <div class="proc-arrow">&#10132;</div>
+      <div class="proc-card">
+        <div class="proc-num">2</div>
+        <h3>Qualification</h3>
+        <p>Chaque reponse est analysee et classee automatiquement : chaud, tiede ou froid. Les curieux sont relances. Les interesses sont prepares. On trie le minerai pour ne garder que l'or.</p>
+      </div>
+      <div class="proc-arrow">&#10132;</div>
+      <div class="proc-card">
+        <div class="proc-num">3</div>
+        <h3>Prospects chauds livres</h3>
+        <p>Vous recevez uniquement les pepites : des prospects qui ont manifeste un interet reel. Prets a discuter, prets a signer. Il ne reste plus qu'a closer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RAPPORT ==================== -->
+<section class="rapport">
+  <div class="container">
+    <p class="section-label">Rapport</p>
+    <h2 class="section-title">Votre extraction, noir sur blanc</h2>
+    <p class="section-sub">Chaque semaine, un bilan complet de ce que vos mineurs ont extrait.</p>
+    <div class="rapport-grid">
+      <div class="rapport-img">SCREENSHOT DU RAPPORT</div>
+      <div class="rapport-stats">
+        <div class="stat-row">
+          <span class="stat-label">Emails envoyes</span>
+          <span class="stat-value">847</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Reponses recues</span>
+          <span class="stat-value">28</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Conversations en cours</span>
+          <span class="stat-value">12</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">RDV generes</span>
+          <span class="stat-value">5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SIMULATEUR ==================== -->
+<section class="simulateur">
+  <div class="container">
+    <p class="section-label">Simulateur</p>
+    <h2 class="section-title">Combien vaut votre mine ?</h2>
+    <p class="section-sub">Ajustez les curseurs selon votre activite.</p>
+    <div class="sim-box">
+      <div class="sim-group">
+        <label>Panier moyen <span id="panierVal">1 500 &#8364;</span></label>
+        <input type="range" id="panier" min="500" max="10000" step="100" value="1500">
+      </div>
+      <div class="sim-group">
+        <label>Capacite maximale <span id="capaciteVal">5 clients</span></label>
+        <input type="range" id="capacite" min="1" max="20" step="1" value="5">
+      </div>
+      <div class="sim-group">
+        <label>Nombre de mineurs <span id="mineursVal">3</span></label>
+        <input type="range" id="mineurs" min="1" max="10" step="1" value="3">
+      </div>
+      <div class="sim-sep"></div>
+      <div class="sim-result">
+        <div class="label">Revenus supplementaires estimes</div>
+        <div class="value" id="resultat">7 500 &#8364;<span class="unit">/mois</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== POURQUOI NOUS CHOISIR ==================== -->
+<section class="pourquoi">
+  <div class="container">
+    <p class="section-label">Pourquoi nous ?</p>
+    <h2 class="section-title">Pourquoi nos mineurs, pas les autres ?</h2>
+    <p class="section-sub">&nbsp;</p>
+    <div class="three-col">
+      <div class="pnc-card">
+        <div class="pnc-icon">&#9878;</div>
+        <h3>La masse, mais personnalise</h3>
+        <p>Des centaines d'emails par jour. Mais chaque message est unique, adapte au prospect. Volume industriel, approche artisanale. Nos mineurs creusent large mais avec precision.</p>
+      </div>
+      <div class="pnc-card">
+        <div class="pnc-icon">&#128274;</div>
+        <h3>Quotas par secteur</h3>
+        <p>Un seul client par secteur et par zone geographique. Votre concurrent ne sera jamais notre client. Vous avez l'exclusivite de votre gisement.</p>
+      </div>
+      <div class="pnc-card">
+        <div class="pnc-icon">&#129309;</div>
+        <h3>Prospection douce</h3>
+        <p>Pas de spam, pas de harcelement. Une approche qui engage la conversation au lieu de la forcer. Nos mineurs extraient avec soin — votre reputation reste intacte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BOOK A CALL ==================== -->
+<section class="bookcall" id="bookcall">
+  <h2>Pret a lancer vos mineurs ?</h2>
+  <p>Reservez 15 minutes. On vous montre le gisement qui dort sous votre marche.</p>
+  <a href="#" class="cta-white">Deployer mes mineurs &#10132;</a>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Minebot</div>
+      <p class="footer-desc">Vos mineurs IA extraient des clients B2B qualifies pendant que vous vous concentrez sur votre metier.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="#">Solution</a>
+      <a href="#">Process</a>
+      <a href="#">Simulateur</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Mentions legales</a>
+      <a href="#">Confidentialite</a>
+      <a href="#">CGV</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Minebot — Tous droits reserves</div>
+</footer>
+
+<script>
+  const panier = document.getElementById('panier');
+  const capacite = document.getElementById('capacite');
+  const mineurs = document.getElementById('mineurs');
+  const panierVal = document.getElementById('panierVal');
+  const capaciteVal = document.getElementById('capaciteVal');
+  const mineursVal = document.getElementById('mineursVal');
+  const resultat = document.getElementById('resultat');
+
+  function fmt(n) {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  function calc() {
+    const p = parseInt(panier.value);
+    const c = parseInt(capacite.value);
+    const m = parseInt(mineurs.value);
+    panierVal.textContent = fmt(p) + ' \u20AC';
+    capaciteVal.textContent = c + ' client' + (c > 1 ? 's' : '');
+    mineursVal.textContent = m;
+    const prospects = m * 2;
+    const clients = Math.min(c, prospects);
+    const rev = p * clients;
+    resultat.innerHTML = fmt(rev) + ' \u20AC<span class="unit">/mois</span>';
+  }
+
+  panier.addEventListener('input', calc);
+  capacite.addEventListener('input', calc);
+  mineurs.addEventListener('input', calc);
+  calc();
+</script>
+
+</body>
+</html>
