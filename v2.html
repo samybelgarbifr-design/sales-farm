@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minebot — V2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #fff; color: #1e293b; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 90vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 80px 24px;
+    background: linear-gradient(170deg, #f8fafc 0%, #eef2ff 50%, #e0e7ff 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(99,102,241,.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800; line-height: 1.15;
+    max-width: 720px;
+    color: #0f172a;
+  }
+  .hero h1 span { color: #6366f1; }
+  .hero .sub {
+    margin-top: 20px;
+    font-size: clamp(16px, 2vw, 19px);
+    color: #64748b; max-width: 560px; line-height: 1.6;
+  }
+  .hero .cta {
+    margin-top: 36px;
+    padding: 16px 36px; border-radius: 10px;
+    background: #6366f1; color: #fff;
+    font-size: 16px; font-weight: 700;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+    box-shadow: 0 4px 16px rgba(99,102,241,.25);
+  }
+  .hero .cta:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(99,102,241,.35); }
+
+  /* ===== SECTIONS COMMON ===== */
+  section { padding: 80px 24px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    font-size: 12px; color: #6366f1; text-transform: uppercase;
+    letter-spacing: 2px; font-weight: 700; text-align: center;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 800; text-align: center; color: #0f172a;
+    margin-bottom: 10px;
+  }
+  .section-sub {
+    font-size: 16px; color: #64748b; text-align: center;
+    max-width: 600px; margin: 0 auto 48px; line-height: 1.6;
+  }
+  .three-col {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 768px) {
+    .three-col { grid-template-columns: 1fr; }
+  }
+
+  /* ===== SOLUTION ===== */
+  .solution { background: #fff; }
+  .sol-card {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px;
+    padding: 32px 24px; text-align: center;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .sol-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+  .sol-icon {
+    width: 56px; height: 56px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; margin: 0 auto 18px;
+  }
+  .sol-card:nth-child(1) .sol-icon { background: #eef2ff; }
+  .sol-card:nth-child(2) .sol-icon { background: #f5f3ff; }
+  .sol-card:nth-child(3) .sol-icon { background: #faf5ff; }
+  .sol-card h3 { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+  .sol-card p { font-size: 14px; color: #64748b; line-height: 1.65; }
+
+  /* ===== RAPPORT ===== */
+  .rapport { background: #f8fafc; }
+  .rapport-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  @media (max-width: 768px) { .rapport-grid { grid-template-columns: 1fr; } }
+  .rapport-img {
+    width: 100%; aspect-ratio: 4/3; background: #e2e8f0; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: #94a3b8; font-size: 13px; font-weight: 600;
+    border: 1px solid #d1d5db;
+  }
+  .rapport-stats { display: flex; flex-direction: column; gap: 20px; }
+  .stat-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; background: #fff; border-radius: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .stat-label { font-size: 14px; color: #64748b; }
+  .stat-value { font-size: 22px; font-weight: 800; color: #0f172a; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 48px 24px 32px;
+    background: #0f172a; color: #94a3b8;
+  }
+  .footer-grid {
+    max-width: 960px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .footer-desc { font-size: 13px; line-height: 1.6; }
+  .footer-col h4 { font-size: 13px; color: #fff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .footer-col a { display: block; font-size: 13px; color: #94a3b8; text-decoration: none; margin-bottom: 8px; }
+  .footer-bottom {
+    max-width: 960px; margin: 32px auto 0;
+    padding-top: 20px; border-top: 1px solid #1e293b;
+    font-size: 12px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <h1>Signez 3 &agrave; 5 nouveaux contrats chaque mois<br><span>gr&acirc;ce &agrave; nos mineurs IA</span></h1>
+  <p class="sub">Ils prospectent, qualifient et vous livrent des prospects prets a signer. Sans jamais s'epuiser.</p>
+  <a href="#" class="cta">Recruter mes mineurs</a>
+</section>
+
+<!-- ==================== LA MECANIQUE ==================== -->
+<section class="solution">
+  <div class="container">
+    <p class="section-label">La mecanique</p>
+    <h2 class="section-title">Comment extraient-ils vos contrats B2B ?</h2>
+    <p class="section-sub">Chaque coup de pioche est calcule. Nos mineurs suivent 3 etapes strategiques pour maximiser le rendement de chaque extraction.</p>
+    <div class="three-col">
+      <div class="sol-card">
+        <div class="sol-icon">&#128506;</div>
+        <h3>Plan d'extraction</h3>
+        <p>On definit ensemble votre client ideal, vos angles d'approche et vos messages. Chaque campagne est construite autour de votre offre, votre secteur et votre zone geographique. Pas de template generique — une carte sur-mesure avant de creuser.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">&#9935;</div>
+        <h3>Sondage de la mine</h3>
+        <p>Nos mineurs identifient vos prospects ideaux et enrichissent chaque contact avec des donnees precises : secteur, taille, localisation, signaux d'achat. On ne creuse pas au hasard — on cible les filons les plus riches.</p>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon">&#128142;</div>
+        <h3>Minage de precision</h3>
+        <p>Des sequences d'emails personnalises, envoyes au bon moment, au bon prospect. Chaque message est calibre pour engager une conversation, pas pour finir en spam. Les pepites remontent a la surface.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RAPPORT ==================== -->
+<section class="rapport">
+  <div class="container">
+    <p class="section-label">Rapport</p>
+    <h2 class="section-title">Votre extraction, noir sur blanc</h2>
+    <p class="section-sub">Chaque semaine, un bilan complet de ce que vos mineurs ont extrait.</p>
+    <div class="rapport-grid">
+      <div class="rapport-img">SCREENSHOT DU RAPPORT</div>
+      <div class="rapport-stats">
+        <div class="stat-row">
+          <span class="stat-label">Emails envoyes</span>
+          <span class="stat-value">847</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Reponses recues</span>
+          <span class="stat-value">28</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Conversations en cours</span>
+          <span class="stat-value">12</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">RDV generes</span>
+          <span class="stat-value">5</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Minebot</div>
+      <p class="footer-desc">Vos mineurs IA extraient des clients B2B qualifies pendant que vous vous concentrez sur votre metier.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="#">Solution</a>
+      <a href="#">Rapport</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Mentions legales</a>
+      <a href="#">Confidentialite</a>
+      <a href="#">CGV</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Minebot — Tous droits reserves</div>
+</footer>
+
+</body>
+</html>
