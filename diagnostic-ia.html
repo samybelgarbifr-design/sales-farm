@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic IA Gratuit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0A0A0A;
+            --surface: #111111;
+            --surface-2: #1A1A1A;
+            --border: #262626;
+            --border-hover: #404040;
+            --text: #E5E5E5;
+            --text-muted: #737373;
+            --text-dim: #525252;
+            --accent: #F97316;
+            --accent-glow: rgba(249, 115, 22, 0.15);
+            --accent-subtle: rgba(249, 115, 22, 0.08);
+            --green: #22C55E;
+            --red: #EF4444;
+            --yellow: #EAB308;
+            --blue: #3B82F6;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glow orb */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Terminal window */
+        .terminal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.03),
+                0 20px 60px rgba(0,0,0,0.5),
+                0 0 100px rgba(249, 115, 22, 0.03);
+        }
+
+        /* Title bar */
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            background: var(--surface-2);
+            border-bottom: 1px solid var(--border);
+            gap: 14px;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: var(--red); }
+        .dot-yellow { background: var(--yellow); }
+        .dot-green { background: var(--green); }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .terminal-title span {
+            color: var(--accent);
+        }
+
+        /* Terminal body */
+        .terminal-body {
+            padding: 32px 28px;
+        }
+
+        /* Command line style header */
+        .cmd-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .prompt {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 15px;
+            user-select: none;
+            flex-shrink: 0;
+            line-height: 1.6;
+        }
+
+        .headline {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .headline .typed-text {
+        }
+
+        /* Output section */
+        .output {
+            margin-top: 24px;
+            padding-left: 0;
+        }
+
+        .output-line {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 6px;
+            line-height: 1.7;
+        }
+
+        .output-prefix {
+            color: var(--text-dim);
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .output-text {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .output-text .highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .output-text .white {
+            color: var(--text);
+        }
+
+        /* Separator */
+        .separator {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 28px 0;
+        }
+
+        /* Deliverables */
+        .deliverables {
+            margin: 24px 0 28px 0;
+        }
+
+        .deliverable-title {
+            font-size: 12px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 14px;
+        }
+
+        .deliverable-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .check {
+            color: var(--green);
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        .deliverable-item span {
+            color: var(--text-muted);
+        }
+
+        /* Form */
+        .form-section {
+            margin-top: 28px;
+        }
+
+        .form-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-header .prompt {
+            font-size: 13px;
+        }
+
+        .form-header-text {
+            font-size: 13px;
+            color: var(--text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .field-label {
+            font-size: 11px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .field-label .label-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .field-input {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px 14px;
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--text);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .field-input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .field-input:hover {
+            border-color: var(--border-hover);
+        }
+
+        .field-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-subtle), 0 0 20px var(--accent-glow);
+        }
+
+        /* Select styling */
+        .field-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23525252' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 38px;
+            cursor: pointer;
+        }
+
+        .field-select option {
+            background: var(--surface);
+            color: var(--text);
+        }
+
+        /* Submit */
+        .submit-wrapper {
+            margin-top: 22px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .submit-btn:hover {
+            background: #FB923C;
+            box-shadow: 0 0 30px var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn .btn-icon {
+            font-size: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .submit-btn:hover .btn-icon {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer .lock {
+            font-size: 12px;
+        }
+
+        /* Status bar */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
+            background: var(--surface-2);
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        .status-left, .status-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+
+            .terminal-body {
+                padding: 24px 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .headline {
+                font-size: 14px;
+            }
+
+            .terminal-title {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="terminal">
+        <!-- Title bar -->
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+            </div>
+            <div class="terminal-title"><span>~</span> diagnostic-ia <span>--</span> session</div>
+            <div style="width: 52px;"></div>
+        </div>
+
+        <!-- Body -->
+        <div class="terminal-body">
+
+            <!-- Headline -->
+            <div class="cmd-line">
+                <span class="prompt">&gt;_</span>
+                <h1 class="headline">Réserve ton diagnostic IA gratuit</h1>
+            </div>
+
+            <!-- Description -->
+            <div class="output">
+                <div class="output-line">
+                    <span class="output-prefix">#</span>
+                    <p class="output-text">
+                        Dans cet appel, j'analyserai et <span class="highlight">j'éplucherai ton business</span> par département, par poste, et toutes les tâches qui peuvent être automatisées.
+                    </p>
+                </div>
+            </div>
+
+            <hr class="separator">
+
+            <!-- Deliverables -->
+            <div class="deliverables">
+                <div class="deliverable-title"># ce que tu repars avec</div>
+                <div class="deliverable-item">
+                    <span class="check">&#10003;</span>
+                    <span>Rapport complet des <span style="color: var(--text);">tâches automatisables</span></span>
+                </div>
+                <div class="deliverable-item">
+                    <span class="check">&#10003;</span>
+                    <span>Processus détaillé pour <span style="color: var(--text);">chaque automatisation</span></span>
+                </div>
+                <div class="deliverable-item">
+                    <span class="check">&#10003;</span>
+                    <span>Outils recommandés et <span style="color: var(--text);">stack technique</span></span>
+                </div>
+                <div class="deliverable-item">
+                    <span class="check">&#10003;</span>
+                    <span>Estimation du <span style="color: var(--text);">temps et argent économisés</span></span>
+                </div>
+            </div>
+
+            <hr class="separator">
+
+            <!-- Form -->
+            <div class="form-section">
+                <div class="form-header">
+                    <span class="prompt">&gt;_</span>
+                    <span class="form-header-text">Initialiser le diagnostic...</span>
+                </div>
+
+                <form id="diagnostic-form">
+                    <div class="form-grid">
+                        <div class="field">
+                            <label class="field-label">
+                                <span class="label-dot"></span>
+                                Prénom
+                            </label>
+                            <input type="text" class="field-input" placeholder="John" required>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">
+                                <span class="label-dot"></span>
+                                Nom
+                            </label>
+                            <input type="text" class="field-input" placeholder="Doe" required>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">
+                                <span class="label-dot"></span>
+                                Entreprise
+                            </label>
+                            <input type="text" class="field-input" placeholder="Acme Corp" required>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">
+                                <span class="label-dot"></span>
+                                Domaine d'activité
+                            </label>
+                            <input type="text" class="field-input" placeholder="SaaS, E-commerce, Agence..." required>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">
+                                <span class="label-dot"></span>
+                                Chiffre d'affaires annuel
+                            </label>
+                            <select class="field-input field-select" required>
+                                <option value="" disabled selected>Sélectionner</option>
+                                <option value="0-100k">&lt; 100k &euro;</option>
+                                <option value="100k-500k">100k - 500k &euro;</option>
+                                <option value="500k-1m">500k - 1M &euro;</option>
+                                <option value="1m-5m">1M - 5M &euro;</option>
+                                <option value="5m+">5M+ &euro;</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label class="field-label">
+                                <span class="label-dot"></span>
+                                WhatsApp
+                            </label>
+                            <input type="tel" class="field-input" placeholder="+33 6 12 34 56 78" required>
+                        </div>
+                    </div>
+
+                    <div class="submit-wrapper">
+                        <button type="submit" class="submit-btn">
+                            Lancer le diagnostic
+                            <span class="btn-icon">&rarr;</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Status bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <div class="status-dot"></div>
+                <span>diagnostic prêt</span>
+            </div>
+            <div class="status-right">
+                <span>100% gratuit</span>
+                <span>&middot;</span>
+                <span>30 min</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span class="lock">&#128274;</span>
+        <span>Tes données restent confidentielles et ne seront jamais partagées.</span>
+    </div>
+</div>
+
+<script>
+    document.getElementById('diagnostic-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const btn = this.querySelector('.submit-btn');
+        btn.innerHTML = '<span style="color: #000;">&#10003; Demande envoyée</span>';
+        btn.style.background = '#22C55E';
+        btn.style.cursor = 'default';
+        btn.disabled = true;
+
+        document.querySelector('.status-left span').textContent = 'diagnostic envoyé';
+    });
+</script>
+
+</body>
+</html>
